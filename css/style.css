@@ -1,7 +1,9 @@
+
 /* Style the navbar */
 #navbar {
     overflow: hidden;
     background-color: #333;
+    
     font-family: 'Merriweather Sans', sans-serif;
 }
 

@@ -65,7 +65,8 @@
 			echo "<a href=\"?page=" . $val['target'] . "\">" . $val['text'] . "<br></a>";
 		}
 
-		echo "<p>Requested page " . $filteredPage . "</p>";
+		echo "<a href='play.php?page=1'><br>Börja om</a>";
+		//echo "<p>Requested page " . $filteredPage . "</p>";
 	} elseif(isset($_SESSION['page'])) {
 		// TODO load page from db
 		// use for returning player / cookie
@@ -74,6 +75,7 @@
 	}
 
 ?>
+	</section>
 </main>
 <script src="js/navbar.js"></script>
 </body>
