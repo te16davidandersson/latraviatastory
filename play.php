@@ -8,39 +8,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
 	<title>Soloäventyr - Spela</title>
 	<link href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans" rel="stylesheet"> 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-<nav id="navbar">
-	<a href="index.php">Hem</a>
-	<a class="active" href="play.php?page=1">Spela</a>
-	<a href="edit.php">Redigera</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-0 border border-dark ">
+	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png"></a>
+	<a class="border-right border-left border-dark px-2 ml-2 py-2" href="play.php?page=1">Spela</a>
+	<a class="border-right border-dark px-2 py-2" href="edit.php">Redigera</a>
 </nav>	
 <main class="content">
 	<section>
-		<h1>Spela</h1>
-<!--
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit hic aliquid nostrum quibusdam veritatis? Eaque accusantium odit id deserunt, quae minima adipisci nesciunt illum ipsa ea placeat, earum laboriosam corrupti.</p>
-		<footer class="gotopagelinks">
-			<p>
-				<a href="play.php?page=1">Nästa sida</a>
-				<a href="play.php?page=2">Gå till sidan</a>
-			</p>
-		</footer>
--->
 <?php
-	include_once 'include/dbinfo.php';
-
-	// PDO
+	include_once 'include/dbinfo.php'; 
 
 	$dbh = new PDO('mysql:host=localhost;dbname=te16;charset=utf8mb4', $dbuser, $dbpass);
 
-	//echo "<pre>" . print_r($dbh,1) . "</pre>";
-
 	if (isset($_GET['page'])) {
-		// TODO load requested page from DB using GET
-		// prio before session
-		// set session to remember
 		$filteredPage = filter_input(INPUT_GET, "page", FILTER_VALIDATE_INT);
 
 		$stmt = $dbh->prepare("SELECT * FROM story WHERE id = :id");
@@ -49,9 +32,15 @@
 
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-		//echo "<pre>" . print_r($row,1) . "</pre>";
-
-		echo "<p>" . $row['text'] . "</p>";
+		echo "<div class='container-fluid'> 
+				<div class='row'>
+					<div class='col text-center'>
+						<p></p>
+						<p class='text-dark font-weight-bold' style='font-size: 2.5em;'>" . $row['text'] . "</p>
+						<p class='text-dark' style='font-size: 2em;'>Vad gör du?</p>
+					</div>
+				</div>
+			</div>";
 
 		$stmt = $dbh->prepare("SELECT * FROM storylinks WHERE storyid = :id");
 		$stmt->bindParam(':id', $filteredPage);
@@ -59,19 +48,24 @@
 
 		$row = $stmt->fetchAll(PDO::FETCH_ASSOC);		
 
-		//echo "<pre>" . print_r($row,1) . "</pre>";
-
 		foreach ($row as $val) {
-			echo "<a href=\"?page=" . $val['target'] . "\">" . $val['text'] . "<br></a>";
+			echo "<div class='container-fluid'>
+					<div class='row'>
+						<div class='col text-center'>
+							<a type='button' class='btn btn-outline-primary btn-lg my-1' style='' href=\"?page=" . $val['target'] . "\">" . $val['text'] . "</a>
+						</div>
+					</div>
+				</div>";
 		}
 
-		echo "<a href='play.php?page=1'><br>Börja om</a>";
-		//echo "<p>Requested page " . $filteredPage . "</p>";
-	} elseif(isset($_SESSION['page'])) {
-		// TODO load page from db
-		// use for returning player / cookie
-	} else {
-		// TODO load start of story from DB
+		echo "<div class='container-fluid'>
+				<div clas='row'>
+					<div class='col text-center mt-5'>
+						<a type='button' class='btn btn-outline-secondary btn-sm text-center' href='play.php?page=1'>Börja om</a>
+					</div>
+				</div>
+			</div>";
+
 	}
 
 ?>

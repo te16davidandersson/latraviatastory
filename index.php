@@ -6,28 +6,40 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-	<title>Soloäventyr</title>
+	<title>Soloäventyr</title> 
 	<link href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans" rel="stylesheet"> 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-<nav id="navbar">
-	<a class="active" href="index.php">Hem</a>
-	<a href="play.php?page=1">Spela</a>
-	<a href="edit.php">Redigera</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-0 border border-dark ">
+	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png"></a>
+	<a class="border-right border-left border-dark px-2 ml-2 py-2" href="play.php?page=1">Spela</a>
+	<a class="border-right border-dark px-2 py-2" href="edit.php">Redigera</a>
 </nav>	
 <main class="content">
-	<section>
-		<h1>Soloäventyr - La Traviata</h1>
-		<p>Välkommen till sidan om...</p>
-<?php
-
-
-
-
-
-?>
-	</section>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col text-center">
+					<p></p>
+					<h1 class="text-primary">Välkommen till det berömda story-spelet pasta alfredo!</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+			</div>
+			<div class="col-6 text-center mb-3">
+				<p class="font-weight-bold mt-5">Hur spelar man?</p>
+				<p class="">Tryck på spela i navbaren för att börja spelet, du får en text som beskriver situationen du är i och ett antal alternativ som du får välja mellan. Du bestämmer alltså själv vilet håll storyn ska ta. Om du kommer till ett slut eller ångrar dina val så kan du alltid trycka på börja om knappen.</p>
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center mb-5">
+				<img class="img-fluid mt-5" src="pastaalfredologga500.png">
+			</div>
+		</div>
+	</div>
 </main>
 <script src="js/navbar.js"></script>
 </body>
