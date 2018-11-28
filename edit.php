@@ -44,10 +44,7 @@
 					<div class="col-3">
 					</div>
 					<div class="col-6">
-						<p>
-							<label for="text">Text: </label>
-							<textarea rows="3" cols="50" name="text" id="text"></textarea>
-						</p>
+							<label class="font-weight-bold" for="text">Text</label>
 					</div>
 					<div class="col-3">
 					</div>
@@ -56,10 +53,25 @@
 					<div class="col-3">
 					</div>
 					<div class="col-6">
-						<p>
-							<label for="place">Place: </label>
-							<input type="text" name="place" id="place">
-						</p>
+							<textarea rows="3" style="width: 69%" name="text" id="text"></textarea>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6">
+							<label class="font-weight-bold" for="place">Place</label>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6">
+							<input class="mb-3" style="width: 69%;" type="text" name="place" id="place">
 					</div>
 					<div class="col-3">
 					</div>
