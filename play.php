@@ -7,12 +7,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
 	<title>Soloäventyr - Spela</title>
-	<link href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 border border-dark ">
-	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png"></a>
+	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png" alt="Logotyp"></a>
 	<a class="border-right border-left border-dark px-2 ml-2 py-2" href="play.php?page=1">Spela</a>
 	<a class="border-right border-dark px-2 py-2" href="edit.php">Redigera</a>
 </nav>	
@@ -52,16 +51,16 @@
 			echo "<div class='container-fluid'>
 					<div class='row'>
 						<div class='col text-center'>
-							<a type='button' class='btn btn-outline-primary btn-lg my-1' style='' href=\"?page=" . $val['target'] . "\">" . $val['text'] . "</a>
+							<a class='btn btn-outline-primary btn-lg my-1' style='' href=\"?page=" . $val['target'] . "\">" . $val['text'] . "</a>
 						</div>
 					</div>
 				</div>";
 		}
 
 		echo "<div class='container-fluid'>
-				<div clas='row'>
+				<div class='row'>
 					<div class='col text-center mt-5'>
-						<a type='button' class='btn btn-outline-secondary btn-sm text-center' href='play.php?page=1'>Börja om</a>
+						<a class='btn btn-outline-secondary btn-sm text-center' href='play.php?page=1'>Börja om</a>
 					</div>
 				</div>
 			</div>";

@@ -7,12 +7,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
 	<title>Soloäventyr - Redigera</title>
-	<link href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 border border-dark ">
-	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png"></a>
+	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png" alt="Logotyp"></a>
 	<a class="border-right border-left border-dark px-2 ml-2 py-2" href="play.php?page=1">Spela</a>
 	<a class="border-right border-dark px-2 py-2" href="edit.php">Redigera</a>
 </nav>	
@@ -47,7 +46,7 @@
 					<div class="col-6">
 						<p>
 							<label for="text">Text: </label>
-							<textarea rows="3" cols="50" name="text"></textarea>
+							<textarea rows="3" cols="50" name="text" id="text"></textarea>
 						</p>
 					</div>
 					<div class="col-3">
@@ -59,7 +58,7 @@
 					<div class="col-6">
 						<p>
 							<label for="place">Place: </label>
-							<input type="varchar" name="place">
+							<input type="text" name="place" id="place">
 						</p>
 					</div>
 					<div class="col-3">

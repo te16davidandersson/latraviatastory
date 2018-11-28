@@ -7,12 +7,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
 	<title>Soloäventyr</title> 
-	<link href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 border border-dark ">
-	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png"></a>
+	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png" alt="Logotyp"></a>
 	<a class="border-right border-left border-dark px-2 ml-2 py-2" href="play.php?page=1">Spela</a>
 	<a class="border-right border-dark px-2 py-2" href="edit.php">Redigera</a>
 </nav>	
@@ -36,7 +35,7 @@
 		</div>
 		<div class="row">
 			<div class="col text-center mb-5">
-				<img class="img-fluid mt-5" src="pastaalfredologga500.png">
+				<img class="img-fluid mt-5" src="pastaalfredologga500.png" alt="Logotyp för Pasta Alfredo">
 			</div>
 		</div>
 	</div>
