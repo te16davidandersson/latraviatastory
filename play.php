@@ -12,8 +12,8 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 border border-dark ">
 	<a class="border-dark" href="index.php"><img class="img-fluid" src="pastaalfredologga50.png" alt="Logotyp"></a>
-	<a class="border-right border-left border-dark px-2 ml-2 py-2" href="play.php?page=1">Spela</a>
-	<a class="border-right border-dark px-2 py-2" href="edit.php">Redigera</a>
+	<a class="border-right border-left border-dark px-2 ml-2 py-2 text-dark" href="play.php?page=1">Spela</a>
+	<a class="border-right border-dark px-2 py-2 text-dark" href="edit.php">Redigera</a>
 </nav>	
 <main class="content">
 	<section>
