@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	include_once 'include/dbinfo.php';
+	$dbh = new PDO('mysql:host=localhost;dbname=te16;charset=utf8mb4', $dbuser, $dbpass);
+	$stmt = $dbh->prepare("SELECT * FROM story");
+    $stmt->execute();
+    $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!doctype html>
 <html lang="se">
@@ -28,7 +33,7 @@
 			</div>
 		</div>
 		</div>
-		<div class="container text-center">
+		<div class="container text-center border-bottom border-dark pb-2">
 		<form action="edit.php" method="POST">
 			<fieldset>
 				<div class="row">
@@ -90,6 +95,92 @@
 			</fieldset>
 		</form>
 		</div>
+		<div class="container text-center border-bottom border-dark pb-2 mt-1">
+		<form action="edit.php" method="POST">
+			<fieldset>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6 mt-3">
+						<p>Redigera</p>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6">
+							<label class="font-weight-bold" for="id">ID</label>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6 ml-5">
+							<select class="form-control ml-4" style="width: 69%">
+								<?php
+									foreach ($row as $value) {
+										echo "<option>" . $value['id'] . "</option>";
+									}
+								?>
+							</select>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6">
+							<label class="font-weight-bold" for="text">Text</label>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6">
+							<textarea rows="3" style="width: 69%" type="textarea" name="textedit" id="textedit"></textarea>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6">
+							<label class="font-weight-bold" for="place">Place</label>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6">
+							<input class="mb-3" style="width: 69%;" type="text" name="placeedit" id="placeedit">
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+					</div>
+					<div class="col-6">
+						<p>
+							<input type="submit" class="btn btn-secondary" name="edit" id="edit" value="Edit">
+						</p>
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		</div>
 	</section>
 	<section>
 <?php
@@ -102,20 +193,23 @@ if(isset($_POST['submit'])) {
 	$stmt->bindParam(':place', $_POST['place']);
 	$stmt->bindParam(':text', $_POST['text']);
 	$stmt->execute();
+	echo "<meta http-equiv=refresh content='0; URL=edit.php'>";
 
-	$sql = "SELECT * FROM story";
-	$stmt = $dbh->prepare($sql);
-	$stmt->execute();
-	$row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+	} elseif(isset($_POST['edit'])) {
+		$stmt = $dbh->prepare("UPDATE story SET textedit= :textedit, placeedit = :placeedit WHERE id= :id");
+		$stmt->bindParam(':textedit', $_POST['textedit']);
+		$stmt->bindParam(':placeedit', $_POST['placeedit']);
+		$stmt->execute();
+		echo "<meta http-equiv=refresh content='0; URL=edit.php'>";
 	}
-foreach($row as $val) {
-	echo "<div class='container'>
-			<div class='row'>
-				<div class='col'>
-					<pre class='border border-dark p-1'> ID: " . print_r($val['id'],1) . "<br>Text: " . print_r($val['text'],1) . "<br>Place: " . print_r($val['place'],1) . "</pre>
+
+	foreach($row as $val) {
+		echo "<div class='container'>
+				<div class='row'>
+					<div class='col'>
+						<pre class='border border-dark p-1'> ID: " . print_r($val['id'],1) . "<br>Text: " . print_r($val['text'],1) . "<br>Place: " . print_r($val['place'],1) . "</pre>
+					</div>
 				</div>
-			</div>
 		</div>";
 }
 ?>
