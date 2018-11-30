@@ -22,22 +22,11 @@
 </nav>	
 <main class="content">
 	<section>
-		<div class="container">
-		<div class="row">
-			<div class="col-4">
-			</div>
-			<div class="col-4 text-center mt-3">
-				<h1>Redigera</h1>
-			</div>
-			<div class="col-4">
-			</div>
-		</div>
-		</div>
 		<div class="container text-center border-bottom border-dark pb-2">
 		<form action="edit.php" method="POST">
 			<fieldset>
-					<div class="col">
-						<p>Skapa en ny story grej</p>
+					<div class="col mt-4">
+						<p>Skapa ny</p>
 					</div>
 					<div class="col">
 							<label class="font-weight-bold" for="text">Text</label>
@@ -100,6 +89,30 @@
 			</fieldset>
 		</form>
 		</div>
+		<div class="container text-center border-bottom border-dark mb-3">
+		<form action="edit.php" method="POST">
+			<fieldset>
+				<div class="col">
+					<p>Radera</p>
+				</div>
+				<div class="col">
+					<label class="font-weight-bold" for="id">ID</label>
+				</div>
+				<div class="col">
+					<select name="idDelete" class="form-control mb-3" style="width: 50%; margin-left: 25%;">
+						<?php
+							foreach ($row as $value) {
+								echo "<option>" . $value['id'] . "</option>";
+							}
+						?>
+					</select>
+				</div>
+				<div class="col">
+					<input class="mb-3 btn btn-secondary" type="submit" name="delete" id="delete" value="Delete">
+				</div>
+			</fieldset>
+		</form>
+		</div>
 	</section>
 	<section>
 <?php
@@ -115,13 +128,18 @@ if(isset($_POST['submit'])) {
 	echo "<meta http-equiv=refresh content='0; URL=edit.php'>";
 
 } elseif(isset($_POST['edit'])) {
-	//$stmt = $dbh->prepare("UPDATE story SET `text` = :textedit, `place`= :placeedit WHERE `id`= :id");
 	$stmt = $dbh->prepare("UPDATE `story` SET `text` = :textedit, `place` = :placeedit WHERE `story`.`id` = :id");
 	$stmt->bindParam(':textedit', $_POST['textedit']);
 	$stmt->bindParam(':placeedit', $_POST['placeedit']);
 	$stmt->bindParam(':id', $_POST['id']);
 	$stmt->execute();
 	echo "<meta http-equiv=refresh content='0; URL=edit.php'>";
+
+} elseif(isset($_POST['delete'])) {
+	$stmt = $dbh->prepare("DELETE FROM `story` WHERE `id` = :idDelete");
+	$stmt->bindParam(':idDelete', $_POST['idDelete']);
+	$stmt->execute();
+	echo "<meta http-equiv-refresh content='0; URL=edit.php'>";
 }
 
 foreach($row as $val) {
