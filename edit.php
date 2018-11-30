@@ -36,91 +36,42 @@
 		<div class="container text-center border-bottom border-dark pb-2">
 		<form action="edit.php" method="POST">
 			<fieldset>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
+					<div class="col">
 						<p>Skapa en ny story grej</p>
 					</div>
-					<div class="col-3">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
+					<div class="col">
 							<label class="font-weight-bold" for="text">Text</label>
 					</div>
-					<div class="col-3">
+					<div class="col">
+							<textarea rows="3" style="width: 50%" name="text" id="text"></textarea>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
-							<textarea rows="3" style="width: 69%" name="text" id="text"></textarea>
-					</div>
-					<div class="col-3">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
+					<div class="col">
 							<label class="font-weight-bold" for="place">Place</label>
 					</div>
-					<div class="col-3">
+					<div class="col">
+							<input class="mb-3" style="width: 50%;" type="text" name="place" id="place">
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
-							<input class="mb-3" style="width: 69%;" type="text" name="place" id="place">
-					</div>
-					<div class="col-3">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
+					<div class="col">
 						<p>
 							<input type="submit" class="btn btn-secondary" name="submit" id="submit" value="Submit">
 						</p>
 					</div>
-					<div class="col-3">
-					</div>
-				</div>
 			</fieldset>
 		</form>
 		</div>
-		<div class="container text-center border-bottom border-dark pb-2 mt-1">
+		<div class="container text-center border-bottom border-dark pb-2 mt-1 mb-4">
 		<form action="edit.php" method="POST">
 			<fieldset>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6 mt-3">
+					<div class="col mt-3">
 						<p>Redigera</p>
 					</div>
-					<div class="col-3">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
+
+					<div class="col">
 							<label class="font-weight-bold" for="id">ID</label>
 					</div>
-					<div class="col-3">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6 ml-5">
-							<select class="form-control ml-4" style="width: 69%">
+
+					<div class="col">
+							<select name="id" class="form-control" style="width: 50%; margin-left: 25%;">
 								<?php
 									foreach ($row as $value) {
 										echo "<option>" . $value['id'] . "</option>";
@@ -128,54 +79,22 @@
 								?>
 							</select>
 					</div>
-					<div class="col-3">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
+					<div class="col">
 							<label class="font-weight-bold" for="text">Text</label>
 					</div>
-					<div class="col-3">
+					<div class="col">
+							<textarea rows="3" style="width: 50%" type="textarea" name="textedit" id="textedit"></textarea>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
-							<textarea rows="3" style="width: 69%" type="textarea" name="textedit" id="textedit"></textarea>
-					</div>
-					<div class="col-3">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
+					<div class="col">
 							<label class="font-weight-bold" for="place">Place</label>
 					</div>
-					<div class="col-3">
+					<div class="col">
+							<input class="mb-3" style="width: 50%;" type="text" name="placeedit" id="placeedit">
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
-							<input class="mb-3" style="width: 69%;" type="text" name="placeedit" id="placeedit">
-					</div>
-					<div class="col-3">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-3">
-					</div>
-					<div class="col-6">
+					<div class="col">
 						<p>
 							<input type="submit" class="btn btn-secondary" name="edit" id="edit" value="Edit">
 						</p>
-					</div>
-					<div class="col-3">
 					</div>
 				</div>
 			</fieldset>
@@ -195,21 +114,23 @@ if(isset($_POST['submit'])) {
 	$stmt->execute();
 	echo "<meta http-equiv=refresh content='0; URL=edit.php'>";
 
-	} elseif(isset($_POST['edit'])) {
-		$stmt = $dbh->prepare("UPDATE story SET textedit= :textedit, placeedit = :placeedit WHERE id= :id");
-		$stmt->bindParam(':textedit', $_POST['textedit']);
-		$stmt->bindParam(':placeedit', $_POST['placeedit']);
-		$stmt->execute();
-		echo "<meta http-equiv=refresh content='0; URL=edit.php'>";
-	}
+} elseif(isset($_POST['edit'])) {
+	//$stmt = $dbh->prepare("UPDATE story SET `text` = :textedit, `place`= :placeedit WHERE `id`= :id");
+	$stmt = $dbh->prepare("UPDATE `story` SET `text` = :textedit, `place` = :placeedit WHERE `story`.`id` = :id");
+	$stmt->bindParam(':textedit', $_POST['textedit']);
+	$stmt->bindParam(':placeedit', $_POST['placeedit']);
+	$stmt->bindParam(':id', $_POST['id']);
+	$stmt->execute();
+	echo "<meta http-equiv=refresh content='0; URL=edit.php'>";
+}
 
-	foreach($row as $val) {
-		echo "<div class='container'>
-				<div class='row'>
-					<div class='col'>
-						<pre class='border border-dark p-1'> ID: " . print_r($val['id'],1) . "<br>Text: " . print_r($val['text'],1) . "<br>Place: " . print_r($val['place'],1) . "</pre>
-					</div>
+foreach($row as $val) {
+	echo "<div class='container'>
+			<div class='row'>
+				<div class='col'>
+					<pre class='border border-dark p-1'> ID: " . print_r($val['id'],1) . "<br>Text: " . print_r($val['text'],1) . "<br>Place: " . print_r($val['place'],1) . "</pre>
 				</div>
+			</div>
 		</div>";
 }
 ?>
